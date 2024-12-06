@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ผู้ลงข้อสอบ</title>
+    <style>
+    /* กำหนดขนาดสูงสุดของโลโก้ */
+    .logo img {
+      max-width: 100%;   /* ขนาดสูงสุดคือ 100% ของพื้นที่ที่มี */
+      height: auto;      /* ความสูงปรับตามสัดส่วน */
+    }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            background-image: url('images/background.jpg');
+            align-items: center;
+            background-color: #f0f8ff;
+        }
+        .container {
+            text-align: center;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid #007bff;
+            max-width: 400px;
+            width: 90%;
+        }
+        h1 {
+            color: #333333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #555555;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .back-link {
+            margin-top: 20px;
+            display: block;
+            font-size: 14px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ผู้ลงข้อสอบ</h1>
+        <form action="dashboard.html" method="post">
+            <div class="form-group">
+                <label for="name">Section</Section></label>
+                <input type="text" id="name" name="name" placeholder="กรอกชื่อของคุณ" required>
+            </div>
+            <div class="form-group">
+                <label for="password">password</label>
+                <input type="password" id="password" name="password" placeholder="กรอกรหัสผ่าน" required>
+            </div>
+            <button type="submit" class="btn">Login</button>
+        
+            <script>
+                // ฟังก์ชั่นตรวจสอบการเข้าสู่ระบบ
+                document.getElementById("login-form").addEventListener("submit", function(event) {
+                    event.preventDefault();
+        
+                    // ดึงข้อมูลจากฟอร์ม
+                    var username = document.getElementById("username").value;
+                    var password = document.getElementById("password").value;
+        
+                    // เช็คชื่อผู้ใช้และรหัสผ่าน (ใช้ค่าคงที่เป็นตัวอย่าง)
+                    if (username === "admin" && password === "password123") {
+                        // หากข้อมูลถูกต้องให้ไปที่หน้า "สร้างห้องสอบ"
+                        window.location.href = "create_exam.html";
+                    } else {
+                        alert("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
+                    }
+                });
+            </script>
+        </form>
+        <a href="

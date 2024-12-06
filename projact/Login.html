@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ทดสอบความรู้วัดค่าฝีมือ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+        
+        /* ใช้ pseudo-element ::before สำหรับพื้นหลัง */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3; /* ปรับค่าความโปร่งใสของพื้นหลัง (0 = โปร่งใส, 1 = ทึบ) */
+            z-index: -1; /* ทำให้ภาพพื้นหลังอยู่ด้านหลังเนื้อหาของหน้าเว็บ */
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgb(255, 255, 255);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid #287fdd; /* กรอบสีฟ้า */
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .logo {
+            max-width: 100px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: #333333;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ใส่รูปโลโก้ -->
+        <img src="images/logo.gif" alt="โลโก้" class="logo">
+        <h1>บริษัท โคเบลโก้ คอนสตรัคชั่น แมชีนเนอรี่ <br>เซาท์อีส เอเชีย จํากัด</h1>
+        <p>กรุณาเลือกบทบาทของคุณ</p>
+        <div class="button-container">
+            <a href="exam_taker.html" class="btn">ผู้เข้าสอบ</a>
+            <a href="exam_creator.html" class="btn">ผู้ลงข้อสอบ</a>
+        </div>
+    </div>
+</body>
+</html>

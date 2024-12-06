@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ผู้เข้าสอบ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('images/background.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .container {
+            text-align: center;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid #007bff;
+            max-width: 400px;
+            width: 90%;
+        }
+        h1 {
+            color: #333333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #555555;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .back-link {
+            margin-top: 20px;
+            display: block;
+            font-size: 14px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ผู้เข้าสอบ</h1>
+        <form action="exam_room.html" method="post">
+            <div class="form-group">
+                <label for="employee_id">รหัสพนักงาน</label>
+                <input type="text" id="employee_id" name="employee_id" placeholder="กรอกรหัสพนักงาน" required>
+            </div>
+            <div class="form-group">
+                <label for="exam_code">รหัสเข้าห้องสอบ</label>
+                <input type="text" id="exam_code" name="exam_code" placeholder="กรอกรหัสเข้าห้องสอบ" required>
+            </div>
+            <button type="submit" class="btn">เข้าสู่ห้องสอบ</button>
+        </form>
+        <a href="Login.html" class="back-link">ย้อนกลับ</a>
+    </div>
+</body>
+</html>
