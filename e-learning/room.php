@@ -1,91 +1,175 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROOM</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>สร้างห้องสอบ</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      position: relative;
+    }
+
+    /* กำหนดให้แถบเมนูด้านข้าง */
+    .sidebar {
+      height: 100vh;
+      width: 250px;
+      background-color: #D2A599;
+      position: fixed;
+      top: 0;
+      left: 0;
+      transition: width 0.3s;
+    }
+
+    .sidebar .logo {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .sidebar .logo img {
+      width: 100%;
+      max-width: 150px;
+    }
+
+    /* เมนูในแถบด้านข้าง */
+    .menu {
+      list-style-type: none;
+      padding: 20px 0;
+    }
+
+    .menu li {
+      padding: 15px;
+      color: white;
+      text-align: center;
+    }
+
+    .menu li:hover {
+      background-color: #836953;
+    }
+
+    /* ปุ่มย่อแถบเมนู */
+    .toggle-btn {
+      position: absolute;
+      top: 20px;
+      right: -20px;
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    /* กำหนดขนาดพื้นที่หลัก */
+    .main-content {
+      margin-left: 250px;
+      /* เมื่อแถบเมนูปกติ ขนาด margin-left คือ 250px */
+      padding: 20px;
+      flex-grow: 1;
+      transition: margin-left 0.3s ease;
+      /* เพิ่มการเปลี่ยนแปลง margin-left เมื่อแถบเมนูย่อ */
+    }
+
+    /* เมนูที่ย่อ */
+    .sidebar.collapsed {
+      width: 80px;
+      /* เมื่อแถบเมนูย่อ ขนาดจะเป็น 80px */
+    }
+
+    .sidebar.collapsed .menu li {
+      font-size: 12px;
+    }
+
+    .sidebar.collapsed .logo img {
+      max-width: 50px;
+    }
+
+    /* เมื่อแถบเมนูย่อแล้ว ให้แสดงเนื้อหาหลักเต็มหน้าจอ */
+    .sidebar.collapsed+.main-content {
+      margin-left: 80px;
+      /* เมื่อแถบเมนูย่อ ให้ margin-left ของเนื้อหาหลักเป็น 80px */
+    }
+
+    /* ปุ่มสร้างห้องสอบ */
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      color: white;
+      background-color: #007bff;
+      border: none; /* ไม่ให้มีขอบ */
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+      /* สีพื้นหลังเมื่อ hover */
+    }
+
+    .user-info img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .user-info .user-details {
+      font-size: 14px;
+    }
+
+    .logo img {
+      width: 250px;
+      /* กำหนดความกว้าง */
+      height: 100px;
+      /* กำหนดความสูง */
+    }
+  </style>
 </head>
-<style>
 
-.sidebar { /*แถบเมนู*/
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color:#b3b6b7; /* สีพื้นหลังแถบเมนู */
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
-
-.sidebar a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color:black;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidebar a:hover {
-  color: #f1f1f1;
-}
-
-.sidebar .closebtn {
-  position: absolute; /*กำหนดปุ่ม x ไว้มุมขวา*/
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-.openbtn {
-  font-size: 20px;  /*ขนาดของตัวอักษรในเมนูปรับให้เหมาะสมกับหน้าจอ*/
-  cursor: pointer;
-  background-color: #818181;
-  color: white; /*สีแถบสามขีด*/
-  padding: 10px 15px;
-  border: none;
-}
-
-.openbtn:hover {
-  background-color: #444;
-}
-
-#main {
-  transition: margin-left .5s;
-  padding: 16px;
-}
-</style>
 <body>
-    <img src="images/logo.png" alt="โลโก้" class="logo">
-    <div id="mySidebar" class="sidebar">
-
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
-        <a href="#">HOME</a>
-        <a href="quiz.php">สร้างห้องสอบ</a>
-        <a href="#">สร้างข้อสอบ</a>
-        <a href="#">ข้อมูลทั้งหมด</a>
+  <div class="sidebar" id="sidebar">
+    <div class="logo">
+      <img src="images/logo.png" alt="โลโก้" class="logo">
     </div>
+    <ul class="menu">
+      <li>HOME</li>
+      <li>สร้างข้อสอบ</li>
+      <li>ข้อสอบของฉัน</li>
+      <li>ข้อมูลทั้งหมด</li>
+    </ul>
+    <div class="toggle-btn" onclick="toggleSidebar()">&#x2190;</div>
+  </div>
 
-    <div id="main">
-        <button class="openbtn" onclick="openNav()">☰ </button>
-    </div>
+  <div class="main-content">
+    <button onclick="window.location.href='exam_room.php'">สร้างห้องสอบ</button>
+  </div>
 
-    <script>
-        function openNav() {
-            document.getElementById("mySidebar").style.width = "250px";
-            document.getElementById("main").style.marginLeft = "250px";
-        }
+  <script>
+    // ฟังก์ชั่นย่อและขยายแถบเมนู
+    function toggleSidebar() {
+      var sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('collapsed');
 
-        function closeNav() {
-            document.getElementById("mySidebar").style.width = "0";
-            document.getElementById("main").style.marginLeft = "0";
-        }
-    </script>
-
+      var toggleBtn = document.querySelector('.toggle-btn');
+      if (sidebar.classList.contains('collapsed')) {
+        toggleBtn.innerHTML = '&#x2192;'; // เปลี่ยนเป็นลูกศรชี้ขวา
+      } else {
+        toggleBtn.innerHTML = '&#x2190;'; // เปลี่ยนเป็นลูกศรชี้ซ้าย
+      }
+    }
+  </script>
+  
 </body>
 
 </html>

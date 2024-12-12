@@ -10,9 +10,8 @@ class MyConnection {
         try {
             $this->conn = new PDO($this->dsn, $this->user, $this->password);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            // โยนข้อผิดพลาดแทนการ echo
-            throw new Exception("Connection failed: " . $e->getMessage());
+        } catch(PDOException $e) {
+          echo "Connection failed: " . $e->getMessage();
         }
     }
 
