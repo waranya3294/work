@@ -15,6 +15,14 @@
             flex-direction: column;
         }
 
+        .no-data {
+
+            color: #0056b3;
+            font-size: 20px;
+            font-weight: bold;
+
+        }
+
         .logo-img {
             width: 120px;
             height: auto;
@@ -52,10 +60,6 @@
             cursor: pointer;
         }
 
-        .menu li:hover {
-            background-color: #836953;
-        }
-
         .toggle-btn {
             position: absolute;
             top: 20px;
@@ -87,7 +91,7 @@
         }
 
         .card-footer {
-            padding: 10px;
+            margin: 0;
             background-color: #f8f9fa;
             text-align: right;
         }
@@ -130,24 +134,14 @@
             transition: background-color 0.3s ease;
         }
 
+        button i {
+            margin-right: 8px;
+        }
+
         button:hover {
             background-color: #0056b3;
         }
 
-        .row {
-            margin-left: 0;
-            margin-right: 0;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-
-        .col-md-4 {
-            padding: 10px;
-            margin: 0;
-            flex: 1 1 calc(33.333% - 20px);
-            box-sizing: border-box;
-        }
 
         .navbar {
             background-color: #f8f9fa;
@@ -230,9 +224,11 @@
     </header>
 
     <div class="main-content">
-        <h1 class="text-center">สร้างห้องเข้าสอบ</h1>
-        <button class="mb-4" onclick="window.location.href='form.php'" title="สร้างห้องเข้าสอบ">สร้างห้องเข้าสอบ</button>
-
+        <h1 class="text-center">สร้างชุดข้อสอบ</h1>
+        <button onclick="window.location.href='form.php'" title="สร้างห้องสอบ">
+            <i class="bi bi-plus-circle-fill"></i>สร้างชุดข้อสอบ
+        </button>
+        <!-- แสดงห้องสอบที่สร้าง้สร็จ -->
         <?php
         try {
             require_once("connection.php");
@@ -257,15 +253,17 @@
                                 <h5 class="card-title text-primary"><strong>category:</strong> <?= htmlspecialchars($row['form_category']) ?></h5>
                                 <p class="card-text">
                                     <strong>รหัสเข้าห้องสอบ:</strong> <?= htmlspecialchars($row['form_code']) ?><br>
-                                    <strong>ชื่อผู้สร้าง:</strong> <?= htmlspecialchars($row['form_name']) ?><br>
+                                    <!-- <strong>ชื่อผู้สร้าง:</strong> <?= htmlspecialchars($row['form_name']) ?><br> -->
                                     <strong>วันที่และเวลา:</strong> <?= htmlspecialchars($row['form_date']) ?>
                                 </p>
                             </div>
                             <div class="card-footer">
-                                <a href="exam_form.php" class="btn btn-success btn-sm">สร้างฟอร์มข้อสอบ</a>
-                                <a href="#" class="btn btn-warning btn-sm">แก้ไข</a>
-                                <a href="#" class="btn btn-primary btn-sm">ดู</a>
-                                <div class="btn btn-danger" onclick="deleteMainTopic(<?= htmlspecialchars($row['form_id']) ?>)">ลบ</div>
+                                <a href="exam_form.php" class="btn btn-success btn-sm" title="สร้างข้อสอบ"><i class="bi bi-file-earmark-font"></i></a>
+                                <a href="#" class="btn btn-warning btn-sm" title="แก้ไข"><i class="bi bi-pencil-square"></i></a>
+                                <a href="#" class="btn btn-primary btn-sm" title="ดู"><i class="bi bi-eye-fill"></i></a>
+                                <div class="btn btn-danger" onclick="deleteMainTopic(<?= htmlspecialchars($row['form_id']) ?>)" title="ลบ">
+                                    <i class="bi bi-trash"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -273,7 +271,8 @@
             <?php endforeach; ?>
         <?php else : ?>
             <div class="col-12 text-center text-muted">
-                <p>ไม่มีข้อมูล</p>
+                <p class="no-data">ไม่พบข้อมูล</p>
+                <p> หากต้องการสร้างข้อมูลใหม่ สามรถกดปุ่ม สร้างห้องสอบ</p>
             </div>
         <?php endif; ?>
     </div>

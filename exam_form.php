@@ -87,10 +87,6 @@
             margin-right: 10px;
         }
 
-        .select-item:hover {
-            background-color: rgb(255, 255, 255);
-        }
-
         .select-hide {
             display: none;
         }
@@ -113,15 +109,24 @@
             gap: 10px;
             margin-top: 20px;
         }
+        
 
         .btn-save {
-            background-color: #28a745;
+            background-color:	#00CC66;
+            color: black;
+        }
+        .btn-save:hover{
+            background-color: #009900;
+            color: white;
+        }
+        .btn-delete:hover{
+            background-color:red;
             color: white;
         }
 
         .btn-delete {
-            background-color: #dc3545;
-            color: white;
+            background-color:rgb(250, 105, 120);
+            color: black;
         }
 
         .side-menu {
@@ -149,11 +154,12 @@
         .side-menu a:hover {
             background-color: #f8f9fa;
         }
-
-        /* ปรับให้ไอคอนมีขนาดใหญ่ขึ้น */
+        
+     /* ปรับให้ไอคอนมีขนาดใหญ่ขึ้น */
         .icon {
             font-size: 24px;
             cursor: pointer;
+            margin-right: 8px;
         }
 
         @media (max-width: 768px) {
@@ -176,12 +182,12 @@
         <!-- กล่องคำถาม -->
         <div class="question-box" id="question-1">
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <input type="text" class="form-control" placeholder="คำถาม" id="question-text" name="question">
+                <input type="text" class="form-control" placeholder="เพิ่มคำถาม ?" id="question-text" name="question">
                 <div class="image-upload">
                     <label for="image-input" class="btn btn-outline-primary ms-3">
-                        <i class="bi bi-image"></i>
+                        <i class="bi bi-image" title="เเทรกรูปภาพ"></i>
                     </label>
-                    <input type="file" id="image-input" accept="image/*" style="display: none;" onchange="previewImage(event)">
+                    <input type="file" id="image-input" accept="image/*" style="display: none;" onchange="previewImage(event)" >
                 </div>
 
                 <div class="custom-select ms-3">
@@ -198,10 +204,10 @@
                             <span class="icon"><i class="fas fa-list-ul"></i></span> Multiple options
                         </div>
                         <div class="select-item" data-value="multiple">
-                            <span class="icon"><i class="bi bi-check-circle"></i></span> radio
+                            <span class="icon"><i class="bi bi-check-circle"></i></span>หลายตัวเลือก
                         </div>
                         <div class="select-item" data-value="checkbox">
-                            <span class="icon"><i class="bi bi-check-square"></i></span> Checkbox
+                            <span class="icon"><i class="bi bi-check-square"></i></span> ช่องทำเครื่องหมาย
                         </div>
                     </div>
                 </div>
@@ -224,9 +230,9 @@
             <!-- ปุ่มคัดลอกและเพิ่มคำถาม -->
             <div class="mt-3 d-flex gap-2">
                 <button class="btn btn-outline-primary" onclick="duplicateQuestion(this)">
-                    <i class="bi bi-copy"></i>
+                    <i class="bi bi-copy" title="คัดลอก"></i>
                 </button>
-                <button class="btn btn-success " onclick="addNewQuestion()">
+                <button class="btn btn-success " onclick="addNewQuestion()" title="เพิ่มคำถาม">
                     <i class="bi bi-plus-circle"></i> เพิ่มคำถาม
                 </button>
             </div>
@@ -235,8 +241,12 @@
         <!-- ปุ่มบันทึกและลบ -->
 
         <div class="action-buttons">
-            <button class="btn btn-save" onclick="saveForm()">บันทึก</button>
-            <button class="btn btn-delete" onclick="deleteQuestion(this)">ลบ</button>
+            <button class="btn btn-save" onclick="saveForm()" >
+                <i class="bi bi-floppy-fill" title="บันทึก"></i>
+                <span>บันทึก</span>
+            </button>
+
+            <button class="btn btn-delete" onclick="deleteQuestion(this)" title="ลบ">ลบ</button>
             <div style="position: relative;">
                 <i class="bi bi-three-dots-vertical icon" id="menu-icon"></i>
 

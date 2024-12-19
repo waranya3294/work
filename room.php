@@ -43,6 +43,10 @@
       background-color: #0056b3;
     }
 
+    button i {
+      margin-right: 8PX;
+    }
+
     table {
       margin-top: 20px;
     }
@@ -66,12 +70,12 @@
     }
 
     .navbar-nav .nav-link:hover {
-     color: #007bff; 
+      color: #007bff;
       background-color: #f1f1f1;
     }
 
     .navbar-nav .nav-link.active {
-      color:rgb(0, 0, 0);
+      color: rgb(0, 0, 0);
     }
 
     .navbar-brand {
@@ -115,7 +119,7 @@
               <a href="summary.php" class="nav-link" title="ข้อมูลทั้งหมด">ข้อมูลทั้งหมด</a>
             </li>
           </ul>
-          <a href="logout.php"  title="ออกจากระบบ"><i class="bi bi-box-arrow-left"></i></a>
+          <a href="logout.php" title="ออกจากระบบ"><i class="bi bi-box-arrow-left"></i></a>
         </div>
       </div>
     </nav>
@@ -124,7 +128,9 @@
 
   <div class="main-content">
     <h1 class="text-center">สร้างห้องสอบ</h1>
-    <button onclick="window.location.href='exam_room.php'"  title="สร้างห้องสอบ">สร้างห้องสอบ</button>
+    <button onclick="window.location.href='exam_room.php'" title="สร้างห้องสอบ">
+      <i class="bi bi-plus-circle"></i>สร้างห้องสอบ
+    </button>
 
     <?php
     try {
